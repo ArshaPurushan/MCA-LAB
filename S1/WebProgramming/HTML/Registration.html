@@ -1,0 +1,90 @@
+<html>
+	<head>
+		<title>Registration Form</title>
+		<script type="text/javascript">
+	
+		
+		function ver(){
+		
+			if(document.forms.reg.t1.value==""){
+				window.alert("Please provide name!!");
+				document.forms.reg.t1.focus();
+				}
+			if(document.forms.reg.radio.value==""){
+				window.alert("select Gender!!");
+				document.forms.reg.radio.focus();
+				}
+			if(document.forms.reg.dob.value==""){
+				window.alert("select Date of birth");
+				document.forms.reg.dob.focus();
+				}	
+				
+		}
+		</script>
+	</head>
+	<body bgcolor="grey">
+		<center>
+		<h2>MAR ATHANASIUS COLLEGE OF ENGINEERING</h2></center
+		<h2><marquee height:"100px" direction="left"><font color="Green">Welcome To Admission Portal</font></marquee></h2>
+		<center><h2>Registration form</h2>
+		<table>
+			<form id="reg" onsubmit="return ver()">
+				<tr>
+					<th>Name</th>
+					<td><input type="text" id="t1" ></td> 
+				</tr>
+				<tr>
+					<th>Gender</th>
+					<td><input type="radio" value="Male" name="radio">Male
+					<input type="radio" value="Female" name="radio">Female
+					<input type="radio" value="Transgender" name="radio">Transgender
+					</td>
+				</tr>
+				<tr>
+					<th>Date Of Brith</th>
+					<td><input type="date" name="dob"></td>
+				</tr>
+				<tr>
+					<th>Course</th>
+					<td>
+					<select>
+						<option value="Selected">select</option>
+						<option value="BA">BA</option>
+						<option value="BSC">BSC</option>
+						<option value="BCA">BCA</option>
+					</select>
+					</td>
+				</tr>	
+				<tr>
+					<th>Address</th>
+					<td><textarea type="text" name="address"></textarea></td>
+				</tr>
+				<tr>
+					<th>Contact Number</th>
+					<td><input type="text" name="phn"></td>
+				</tr>	
+				<tr>
+					<th>Guardian's Name</th>
+					<td><input type="text" name="gname"></td>
+				</tr>
+				<tr>
+					<th>Hobbies</th>
+					<td><input type="checkbox" value="H1" name="checkbox">Read
+					<input type="checkbox" value="H2" name="checkbox">Dance
+					<input type="checkbox" value="H3" name="checkbox">Cook
+					<input type="checkbox" value="H4" name="checkbox">other
+					</td>
+				</tr>	
+				<tr>
+					<th>Extra Curricular</th>
+					<td><input type="text" name="ec"></td>
+				</tr>
+				<tr>
+					<th colspan='2'><input type="submit" value="Ok" name="submit">&nbsp&nbsp&nbsp
+					<input type="reset" value="Cancel" name="reset"></th>
+				</tr>
+			</form>
+		</table>
+		</center>
+	</body>	
+</html>	

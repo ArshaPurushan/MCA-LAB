@@ -1,0 +1,7 @@
+a=input("Enter numbers: ")
+b=a.split()
+c=list(b)
+big=max(c)
+print("Maximum element: ",big)
+small=min(c)
+print("Minimum element: ",small)

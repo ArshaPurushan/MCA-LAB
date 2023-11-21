@@ -1,0 +1,51 @@
+<html>
+	<head>
+	<title>JavaScript 1</title>
+	<script type="text/javascript">
+	
+		
+			
+				function Show(){
+					
+					var name=document.getElementById("t1").value;
+					var subt=document.getElementById("sub").value;
+					var mar=document.getElementById("m1").value
+					document.write("Name: "+name);
+					document.write(" Subject: "+subt);
+					document.write(" Mark: "+mar);
+					
+				}
+				
+				function Reset(){
+					document.getElementById("info").reset;
+				}		
+			</script>	
+	</head>
+	
+	<body>
+		<center>
+					
+			<br><br>		
+			<table>
+				<form id="info" >
+					<tr>
+						<td>Name</td>
+						<td><input type="text" id="t1" ></td>
+					</tr>
+					<tr>
+						<td>Subject</td>
+						<td><input type="text" id="sub"></td>
+					</tr>
+					<tr>
+						<td>Mark</td>
+						<td><input type="number" id="m1"></td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center"><input type="submit" value="Submit" OnClick="Show()">&nbsp&nbsp&nbsp&nbsp&nbsp
+						<input type="reset" value="Cancel" OnClick="Reset()">
+					</tr>	
+				</form>
+			</table>
+		</center>			
+	</body>
+</html>

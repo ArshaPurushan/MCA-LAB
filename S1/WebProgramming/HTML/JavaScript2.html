@@ -1,0 +1,52 @@
+<html>
+<head>
+	<title>JavaScript 2</title>
+	<script type="text/javascript">
+	
+		function ver(){
+		
+			if(document.forms.info.t1.value==""){
+				window.alert("Please provide name!!");
+				document.forms.info.t1.focus();
+				}
+			if(document.forms.info.sub.value==""){
+				window.alert("Enter subject!!");
+				document.forms.info.sub.focus();
+				}
+			if(document.forms.info.m1.value==""){
+				window.alert("Enter mark!!");
+				document.forms.info.m1.focus();
+				}	
+				
+		}
+		
+	</script>	
+</head>
+		
+<body>
+		<center>
+					
+			<br><br>		
+			<table>
+				<form id="info" onsubmit="return ver()">
+					<tr>
+						<td>Name</td>
+						<td><input type="text" id="t1"></td>
+					</tr>
+					<tr>
+						<td>Subject</td>
+						<td><input type="text" name="sub"></td>
+					</tr>
+					<tr>
+						<td>Mark</td>
+						<td><input type="number" name="m1"></td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center"><input type="submit" value="Submit" >&nbsp&nbsp&nbsp&nbsp&nbsp
+						<input type="reset" value="Cancel" >
+					</tr>	
+				</form>
+			</table>
+		</center>			
+	</body>
+</html>

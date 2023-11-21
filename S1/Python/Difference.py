@@ -1,0 +1,5 @@
+a=input("color list 1: ")
+a=a.split(',')
+b=input("color list 2: ")
+b=b.split(',')
+print("Color in a not in b: ",set(a)-set(b))
