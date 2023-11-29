@@ -12,6 +12,7 @@ c(3)'''
 
 from Graphics.DGraphics import Module2
 Module2.cuboid(2,1,2)
+Module2.sphere(2)
 
 
 
