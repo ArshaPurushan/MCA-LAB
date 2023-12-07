@@ -1,48 +1,75 @@
 #include<stdio.h>
-#include<stdlib.h>
-int q[10],visited[10],i,j,n,adj[10][10],front=1,rear=0,v,item;
-void insert(int v)
+int n,s,adj[10][10],queue[10];
+int visited[10]={0,0,0,0,0,0,0,0,0,0};
+int front=-1,rear=-1,item;
+void enqueue(int item)
 {
-	rear++;
-	q[rear]=v;
+	if(rear==9)
+		printf("Queue is full\n");
+	else
+	{
+		if(rear==-1)
+		{
+			front=rear=0;
+			queue[rear]=item;
+		}
+		else
+		{
+			rear=rear+1;
+			queue[rear]=item;
+		}
+	}	
 }
-int get()
+int dequeue()
 {
-	v= q[front];
-	front++;
-	return v;
+	int k;
+	if((front>rear)||(front==-1))
+		return (0);
+	else
+	{
+		k=queue[front];
+		front++;
+		return (k);
+	}
+}
+void bfs(int s,int n)
+{
+	int p,i;
+	enqueue(s);
+	visited[s]=1;
+	p=dequeue();
+	if(p!=0)
+		printf("%d ",p);
+	while(p!=0)
+	{
+		for(i=1;i<=n;i++)
+		{
+			if(adj[p][i]==1 && visited[i]==0)
+			{
+				enqueue(i);
+				visited[i]=1;
+			}
+		}
+		p=dequeue();
+		if(p!=0)
+			printf("%d ",p);
+	}
+	printf("\n");
 }
 int main()
 {
-	printf("Total no of vertices :: ");
+	printf("Enter the no of vertices: ");
 	scanf("%d",&n);
-	for(i=1;i<=n;i++)
-		 visited[i]=0;
-	printf("\nenter the adjacency matrix!\n");
-	for(i=1;i<=n;i++)
+	printf("Enter the adjacency matrix:\n");
+	for(int i=1;i<=n;i++)
 	{
-		for(j=1;j<=n;j++)
+		for(int j=1;j<=n;j++)
 		{
-				scanf("%d",&adj[i][j]);
+			scanf("%d",&adj[i][j]);
 		}
 	}
-	printf("spanning tree edges are:\n");
-	//printf("\nselect a starting vertex from 1 to  %d:",n);
-	insert(1);
-	for(i=1;i<=n;i++)
-	{
-		item=get();
-		visited[item]=1;
-		for(j=i+1;j<=n;j++)
-		{
-			if(adj[item][j]==1 && visited[j]==0)
-			{
-				visited[j]=1;
-				insert(j);
-				printf("edge(%d,%d)\n",item,j);
-			}
-		}
-	}
-	printf("\n");
-return 0;
+	printf("Enter the starting vertex: ");
+	scanf("%d",&s);
+	bfs(s,n);
+	return 0;
 }
