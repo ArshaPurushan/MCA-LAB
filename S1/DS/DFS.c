@@ -1,78 +1,54 @@
 #include<stdio.h>
-int n,s,adj[10][10],stack[10];
-int visited[10]={0,0,0,0,0,0,0,0,0,0};
-int top=-1;
-int item;
-void push(int item)
+#include<stdlib.h>
+int s[10],visited[10],i,j,n,adj[10][10],top=0,v,k,item;
+void push(int v)
 {
-	if(top==9)
-	{
-		printf("Stack is full\n");
-	}
-	else
-	{
-		if(top==-1)
-		{
-			top=0;
-			stack[top]=item;
-		}
-		else
-		{
-			top=top+1;
-			stack[top]=item;
-		}
-	}
+	top++;
+	s[top]=v;
 }
 int pop()
 {
-	int k;
-	if(top==-1)
-		return (0);
-	else
-	{
-		k=stack[top];
-		top--;
-		return (k);
-	}
-}
-void dfs(int s,int n)
-{
-	int p,i;
-	push(s);
-	visited[s]=1;
-	p=pop();
-	if(p!=0)
-		printf("%d ",p);
-	while(p!=0)
-	{
-		for(i=1;i<=n;i++)
-		{
-			if(adj[p][i]==1 && visited[i]==0)
-			{
-				push(i);
-				visited[i]=1;
-			}
-		}
-		p=pop();
-		if(p!=0)
-			printf("%d ",p);
-	}
-		printf("\n");
+	v= s[top];
+	top--;
+	return v;
 }
 int main()
 {
-	printf("Enter the no of vertices: ");
+	printf("Total no of vertices :: ");
 	scanf("%d",&n);
-	printf("Enter the adjacency matrix:\n");
-	for(int i=1;i<=n;i++)
+	for(i=1;i<=n;i++)
+		 visited[i]=0;
+	printf("\nenter the adjacency matrix!\n");
+	for(i=1;i<=n;i++)
 	{
-		for(int j=1;j<=n;j++)
+		for(j=1;j<=n;j++)
 		{
-			scanf("%d",&adj[i][j]);
+				scanf("%d",&adj[i][j]);
 		}
 	}
-	printf("Enter the starting vertex: ");
-	scanf("%d",&s);
-	dfs(s,n);
-	return 0;
+	printf("spanning tree edges are:\n");
+	//printf("\nselect a starting vertex from 1 to  %d:",n);
+	push(1);
+	for(i=1;i<=n;i++)
+	{
+		item=pop();
+		printf("%d-->",item);
+		visited[item]=1;
+		for(j=i+1;j<=n;j++)
+		{
+			if(adj[item][j]==1 && visited[j]==0)
+			{
+				visited[j]=1;
+				push(j);
+			}
+		}	
+	
+	/*for(k=1;k<=top;k++)
+	{
+	printf("%d-->",s[k]);
+	}
+	printf("\n");*/
+	}
+	
+return 0;
 }
