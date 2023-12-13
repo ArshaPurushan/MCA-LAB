@@ -1,57 +1,138 @@
+<!--     Create a form for product details    -->
+<html>
+	<head>
+	<title>Product</title>
+	<style>
+		table{
+			font-family:arial,sans-serif;
+			
+	<!--		width:100%;  -->
+	
+			}
+		td,th{
+			border:1px solid black;
+			text-align:center;
+
+			}
+		tr:nth-child(even){
+			background-color:#dddddd;
+			}
+	</style>
+	</head>
+	<body>
+	<center>
+		<form method=post action="ProductShow.php">
+		<b><u><h2>PRODUCT DETAILS</h2></u></b>
+			<table border="" align="center">
+				<tr>
+					<td>PRODUCT NAME</td>
+					<td><input type="text" name="t1"></td>
+				</tr>
+				<tr>
+					<td>QUANTITY</td>
+					<td><input type="number" name="t2"></td>
+				</tr>
+				<tr>
+					<td>UNIT PRICE</td>
+					<td><input type="number" name="t3"></td>
+				</tr>
+				<tr>
+					<td>MANUFACTURER</td>
+					<td><input type="date" name="t4"></td>
+				</tr>
+				<tr>
+					<td>EXPIRED DATE</td>
+					<td><input type="date" name="t5"></td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="submit" name="b1" value="Ok">&nbsp&nbsp<input type="reset" name="b2" value="Cancel"></td>
+				</tr>
+			</table>
+		</form>
+	</center>
+	</body>
+</html>
+
+
+
 <?php
-//Connection
- 
-    $conn =new mysqli('localhost',"root","","MCA2023");
-    if($conn->connect_error){
-        die("connection failed :".$conn->connection_error);
-    }
 
-// sql to create table
-$sql = "CREATE TABLE Product (
-    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    product_name VARCHAR(50) NOT NULL,
-    price DECIMAL(10,2) NOT NULL,
-    stock INT(6) NOT NULL,
-    reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-)";
+	$conn=new mysqli("localhost","root","","MCA2023");
+	if($conn->connect_error)
+		die("\nconnection failed:".$conn->connect_error);
+		
+		//create product table in database
+/**		
+//$s="create table student(rollno int primary key ,name varchar(20),department varchar(20) )";
+	$s="create table product(pid int primary key AUTO_INCREMENT ,pname varchar(20),quantity int,price varchar(20),man_date  date,exp_date date)";
+	if($conn->query($s)===TRUE)
+		echo "\ntable created";
+	else
+		echo "\nfailed to create table:",$conn->error;
+**/
 
-if ($conn->query($sql) === TRUE) {
-    echo "Table Product created successfully";
-} else {
-    echo "Error creating table: " . $conn->error;
-}
+	//insert data into the table
 
-// sql to insert data
-$sql = "INSERT INTO Product (product_name, price, stock)
-VALUES ('Product A', 100.00, 50)";
-
-if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
-
-// sql to select data
-$sql = "SELECT id, product_name, price, stock FROM Product";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        echo "id: " . $row["id"]. " - Name: " . $row["product_name"]. " - Price: " . $row["price"]. " - Stock: " . $row["stock"]. "<br>";
-    }
-} else {
-    echo "0 results";
-}
-
-// sql to update data
-$sql = "UPDATE Product SET price = 150.00, stock = 60 WHERE id = 1";
-
-if ($conn->query($sql) === TRUE) {
-    echo "Record updated successfully";
-} else {
-    echo "Error updating record: " . $conn->error;
-}
-
+	if(isset($_POST['b1']))
+	{
+		if(!(empty($_POST['t1']) || empty($_POST['t2']) || empty($_POST['t3']) || empty($_POST['t4']) || empty($_POST['t5'])))
+		{
+			$n =$_POST['t1'];
+			$q =$_POST['t2'];
+			$p =$_POST['t3'];
+			$m =$_POST['t4'];
+			$e =$_POST['t5'];
+			
+/**			$con=new mysqli("localhost","root","","MACE");
+			if($con->connect_error)
+				die("\nconnection failed:".$con->connect_error);
+**/				
+			$i="insert into product(pname,quantity,price,man_date,exp_date) values('$n',$q,'$p','$m','$e')";
+			if($conn->query($i)==TRUE)
+				echo "\nproduct details inserted";
+			else
+				echo "\nfailed to insert product details:",$conn->error;
+//			$conn->close();
+		}
+		else
+			echo "FILL THE FIELDS";
+	}	
+	
+/**	$s="select  *from product";
+	if($conn->query($s)==TRUE)
+	{
+		$result=$conn->query($s);
+		if($result->num_rows>0)
+		{	
+			?>
+			&nbsp&nbsp<table border="1" align="center">
+			<tr>
+				<th>PRODUCT ID</th>
+				<th>PRODUCT NAME</th>
+				<th>QUANTITY</th>
+				<th>UNIT PRICE</th>
+				<th>MANUFACTURED DATE</th>
+				<th>EXPIRY DATE</th>
+			</tr>
+		<?php
+			while($row=$result->fetch_assoc())
+			{
+				echo "<tr><th>".$row['pid']."</th>
+				<th>".$row['pname']."</th>
+				<th>".$row['quantity']."</th>
+				<th>".$row['price']."</th>
+				<th>".$row['man_date']."</th>
+				<th>".$row['exp_date']."</th></tr>";
+			}
+		}
+		echo "</table>";
+	}
+	else
+		echo "\nfailed to display details:",$conn->error;	
+		
+	
+		
+**/
+		
 $conn->close();
 ?>
