@@ -1,0 +1,59 @@
+user@user-OptiPlex-5000:~$ sqlplus sys as sysdba
+
+SQL*Plus: Release 11.2.0.2.0 Production on Mon Feb 5 14:40:34 2024
+
+Copyright (c) 1982, 2011, Oracle.  All rights reserved.
+
+Enter password: 
+
+Connected to:
+Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+
+SQL> create table student(id int,name varchar(20));
+
+Table created.
+
+SQL> insert into student values(1,'Diya');
+
+1 row created.
+
+SQL> select * from student;
+
+	ID NAME
+---------- --------------------
+	 1 Diya
+
+SQL> insert into student values(&id,'&name');
+Enter value for id: 2
+Enter value for name: Giya 
+old   1: insert into student values(&id,'&name')
+new   1: insert into student values(2,'Giya')
+
+1 row created.
+
+SQL> /
+Enter value for id: 3
+Enter value for name: Jia
+old   1: insert into student values(&id,'&name')
+new   1: insert into student values(3,'Jia')
+
+1 row created.
+
+SQL> /
+Enter value for id: 4
+Enter value for name: John
+old   1: insert into student values(&id,'&name')
+new   1: insert into student values(4,'John')
+
+1 row created.
+
+SQL> select * from student;
+
+	ID NAME
+---------- --------------------
+	 1 Diya
+	 2 Giya
+	 3 Jia
+	 4 John
+
+
