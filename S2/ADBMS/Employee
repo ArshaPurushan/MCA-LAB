@@ -1,0 +1,36 @@
+SQL> DESC EMPLOYEE
+ Name					   Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPID					   NOT NULL NUMBER(38)
+ NAME						    VARCHAR2(20)
+ DEPT						    VARCHAR2(20)
+ CITY						    VARCHAR2(20)
+ SALARY 					    NUMBER(7,2)
+
+SQL> SELECT * FROM EMPLOYEE;
+
+     EMPID NAME 		DEPT		     CITY
+---------- -------------------- -------------------- --------------------
+    SALARY
+----------
+       112 VINOD S		SALES		     KOCHI
+     20000
+
+       114 JEO MATHEW		HR		     KOCHI
+     75000
+
+       118 JOYAL SEBU		FINANCE 	     CHENNAI
+     73000
+
+
+     EMPID NAME 		DEPT		     CITY
+---------- -------------------- -------------------- --------------------
+    SALARY
+----------
+       202 RIYA V		SALES		     CHENNAI
+     25000
+
+       200 RAVI R		HR		     HYDERBAD
+     78000
+
+
