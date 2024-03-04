@@ -55,5 +55,25 @@ SQL> select * from student;
 	 2 Giya
 	 3 Jia
 	 4 John
+SQL> select * from student where id=1;
+
+	ID NAME
+---------- --------------------
+	 1 Diya
+
+SQL> select name from student;
+
+NAME
+--------------------
+Diya
+Giya
+Jia
+John
+
+SQL> select * from student where id=1 or name='jia';
+
+	ID NAME
+---------- --------------------
+	 1 Diya
 
 
