@@ -17,7 +17,7 @@ class UserInput
 	}
 	static void Show()
 	{
-	System.out.println("Static Nethod");
+	System.out.println("Static Method");
 	}
 	public static void main(String args[])
 	{
