@@ -9,7 +9,7 @@ class UserInput
 	
 	void show()
 	{
-		System.out.println("non static method");
+		System.out.println("\nnon static method");
 		System.out.println("****Student Details****");
 		System.out.println("Name: "+name);
 		System.out.println("Roll.no: "+rollno);
@@ -17,7 +17,7 @@ class UserInput
 	}
 	static void Show()
 	{
-	System.out.println("Static Method");
+	System.out.println("\nStatic Method");
 	}
 	public static void main(String args[])
 	{
