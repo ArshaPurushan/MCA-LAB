@@ -377,6 +377,7 @@ SNAME
 -------------------------
 dustin
 
+
 //AGGREGATE OPERATIONS
 
 SQL> select sname,age from sailors where age=(select min(age) from sailors);
