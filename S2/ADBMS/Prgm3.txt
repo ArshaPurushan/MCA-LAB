@@ -1,3 +1,5 @@
+//DML STSTEMENT PATTERN MATCHING
+
 SQL> select * from department;
 
    DEPT_ID DEPT_NAME		DEPT_CITY
