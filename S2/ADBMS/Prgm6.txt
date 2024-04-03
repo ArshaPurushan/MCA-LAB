@@ -345,10 +345,7 @@ SQL> select  sailors.sid,sname from sailors inner join reserve on sailors.sid=re
 	22 dustin
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> d73f460fe6d41cb8dc58db46e411f26b6ce43e50
 //SET OPERATIONS
 
 SQL> select sid from reserve,boat where reserve.bid=boat.bid and color='red' union select sid from reserve,boat where reserve.bid=boat.bid and color='green';
@@ -368,30 +365,19 @@ dustin
 horatio
 lubber
 
-<<<<<<< HEAD
-SQL> select sname,age from sailors where age in (select min(age) from sailors);
-=======
 SQL> select sname,age from sailors intersect select sname,age from sailors where age in (select min(age) from sailors);
->>>>>>> d73f460fe6d41cb8dc58db46e411f26b6ce43e50
 
 SNAME				 AGE
 ------------------------- ----------
 zorba				  16
 
-<<<<<<< HEAD
-=======
 
->>>>>>> d73f460fe6d41cb8dc58db46e411f26b6ce43e50
 SQL> select  sname from sailors where not exists((select bid from boat) minus (select bid from reserve where reserve.sid=sailors.sid));
 
 SNAME
 -------------------------
 dustin
 
-<<<<<<< HEAD
-//AGGREGATE OPERATIONS
-
-=======
 
 
 //AGGREGATE OPERATIONS
@@ -467,4 +453,3 @@ SQL> select min(age),rating from sailors group by rating;
 	35	    9
 
 
->>>>>>> d73f460fe6d41cb8dc58db46e411f26b6ce43e50
