@@ -1,0 +1,17 @@
+//Write a PL/SQL program to calculate area of a circle
+
+SQL> Set Serveroutput ON
+SQL> DECLARE
+  2  area number(6,2);
+  3  pi constant number(3,2):=3.14;
+  4  radius number(5):=3;
+  5  BEGIN
+  6  area:=pi*radius*radius;
+  7  dbms_output.put_line('Area= '||area);
+  8  END;
+  9  /
+Area= 28.26
+
+PL/SQL procedure successfully completed.
+
+
