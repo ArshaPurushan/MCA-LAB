@@ -5,7 +5,7 @@ SQL> create table customers(id int,name varchar(30),age int,address varchar(50),
 --Table created.
 
 SQL> insert into customers values(1,'Ramesh',32,'Ahemdabad',2000);
-SQL> insert into customers values(3,'Kaushik',23,kota,2000);
+SQL> insert into customers values(2,'khilan',25,'Delhi',1500);
 
 SQL> select * from customers;
 
