@@ -1,5 +1,13 @@
 --row level trigger
 
+SQL> grant resource,connect to ARSHA;
+
+--Grant succeeded.
+
+SQL> connect ARSHA/arsha123;
+--Connected.
+SQL> @Prgm21
+
 SQL> create table customers(id int,name varchar(30),age int,address varchar(50),salary float);
 
 --Table created.
