@@ -114,6 +114,16 @@
 
 
  d) Update Salary Of Employee where Name is "Sita" by +1000
+	 db.EmployeeDetails.findOneAndUpdate(
+... ... ...     { "empname": "Sita" },
+... ... ...     { $inc: { "salary": 1000 } })
+{
+	"_id" : ObjectId("663da73f226520cb2f68dd0b"),
+	"empid" : 104,
+	"empname" : "Sita",
+	"salary" : 15000,
+	"designation" : "Clerk"
+}
  
  
  e) Add a New Field Date of Joining to document with name "DOJ" 
