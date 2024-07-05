@@ -38,6 +38,7 @@
  b) List all the details of employees in a neat format.
  
  	> db.EmployeeDetails.find()
+ 	
 	{ "_id" : ObjectId("663da574226520cb2f68dd08"), "empid" : 101, "empname" : "Ram", "salary" : 15000, "designation" : "clerk" }
 	{ "_id" : ObjectId("663da73f226520cb2f68dd09"), "empid" : 102, "empname" : "Shyam", "salary" : 20000, "designation" : "Administrator" }
 	{ "_id" : ObjectId("663da73f226520cb2f68dd0a"), "empid" : 103, "empname" : "Hari", "salary" : 10000, "designation" : "Supervisor" }
@@ -114,19 +115,52 @@
 
 
  d) Update Salary Of Employee where Name is "Sita" by +1000
-	 db.EmployeeDetails.findOneAndUpdate(
-... ... ...     { "empname": "Sita" },
-... ... ...     { $inc: { "salary": 1000 } })
-{
-	"_id" : ObjectId("663da73f226520cb2f68dd0b"),
-	"empid" : 104,
-	"empname" : "Sita",
-	"salary" : 15000,
-	"designation" : "Clerk"
-}
  
+	  > db.EmployeeDetails.findOneAndUpdate(
+	 ...     { "empname": "Sita" },
+	 ...     { $inc: { "salary": 1000 } })
+	{
+		"_id" : ObjectId("663da73f226520cb2f68dd0b"),
+		"empid" : 104,
+		"empname" : "Sita",
+		"salary" : 15000,
+		"designation" : "Clerk"
+	}
+	 
  
  e) Add a New Field Date of Joining to document with name "DOJ" 
+ 
+ 	> db.EmployeeDetails.updateMany({}, { $set: { "DOJ": new Date("2024-05-09") } })
+ 	
+	{ "acknowledged" : true, "matchedCount" : 6, "modifiedCount" : 6 }
+
  f) Find sum of salaries of employees with designation as “clerk”
+ 
+ 	> db.EmployeeDetails.aggregate([{$match:{designation:"Clerk"}},{$group:	{_id:null,totalsalary:{$sum:"$salary"}}}])
+ 	
+	{ "_id" : null, "totalsalary" : 16000 }
+
  g) Delete a document having employee id with 106.
+ 
+ 	> db.EmployeeDetails.deleteOne({empid:106})
+ 	
+	{ "acknowledged" : true, "deletedCount" : 1 }
+
  h) Create a user with name “Mohan” and give read/write role to the user for Employee database.
+ 
+ 	> db.createUser({
+	...     user: "Mohan",
+	...     pwd: "123",
+	...     roles: [{ role: "readWrite", db: "Employee" }]
+	... })
+
+	Successfully added user: {
+		"user" : "Mohan",
+		"roles" : [
+			{
+				"role" : "readWrite",
+				"db" : "Employee"
+			}
+		]
+	}
+
