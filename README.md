@@ -1,1 +1,1 @@
-Academic exercise problems
+Academic Exercises
